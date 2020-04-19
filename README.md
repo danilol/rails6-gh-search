@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Very simple app to search public repositories from github using Rails 6.
 
-Things you may want to cover:
+Authentication is not working properly, affecting searchs with big number of results, so it returns an error for reaching the request limits. 
 
-* Ruby version
+## Setup
+git clone 
+bundle
+rails s
 
-* System dependencies
+## Tests
+To run the controller tests:
+`rspec`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## TODO list:
+[ ] - Pagination
+[ ] - Capybara tests
+[ ] - Authentication is not working properly
+[ ] - Remove secrets from controller
