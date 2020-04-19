@@ -1,0 +1,42 @@
+<section class="jumbotron text-center">
+  <div class="container field form-group">
+    <h1>Github search</h1>
+    <%= form_tag(home_path, method: :get) do  %>
+      <%= text_field_tag(:search, params[:search], placeholder: "Type something...", class: "form-control-sm") %>
+      <%= submit_tag "Search", name: nil, class: "actions", disabled: true, data: { disable_with: false }%>
+    <% end %>
+    <p>Search more than 28M public repositories</p>
+  </div>
+</section>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <% if @result.success %>
+        <% if params[:search] && @result.items.empty? %>
+          <div><p>nothing was found =(</p></div>
+        <% else %>
+          <% @result.items.each do |repo| %>
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                  <p><%= repo.full_name %></p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <div><%= repo.language%></div>
+                      <div>Updated on <%= repo.pushed_at %></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <div class="container">
+          <h1>An error has ocurred, please try again later...</h1>
+          <p><%= @result.error_msg %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
