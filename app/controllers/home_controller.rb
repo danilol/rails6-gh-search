@@ -24,9 +24,7 @@ class HomeController < ApplicationController
   end
 
   def response_object(success, msg, data = [])
-    OpenStruct.new(success: success,
-                   items: data,
-                   error_msg: msg)
+    OpenStruct.new(success: success, items: data, error_msg: msg)
   end
 
   def build_data_response(repo)
@@ -50,8 +48,7 @@ class HomeController < ApplicationController
 
   # secrets should not be here
   def github
-    @github ||= Github.new client_id: "625cacc10fce2ecfd5ad",
-                           client_secret: "d8a268c234d654576a65318b520e84324da6cb31"
+    @github ||= Github.new
   end
 
   def search_params
