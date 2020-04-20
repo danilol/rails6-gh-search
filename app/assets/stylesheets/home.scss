@@ -2,12 +2,54 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-body {
-  /*background-image: url("baby-yoda.png");*/
-  font-family: Chunkfive, sans-serif;
+$height-footer: 60px;
 
+
+html {
+  min-height: 100%;
+  position: relative;
+  background-color: #e9ecef;
+  body {
+    margin-bottom: $height-footer;
+  }
+  #footer {
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+    height: $height-footer;
+    background-color: #f5f5f5;
+    .footer-block {
+      margin: 20px 0;
+    }
+  }
 }
 
-.repo-card {
-  border: 1px solid #333;
-}
+
+.custom_pagination {
+  background: #e9ecef;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  padding: 1em;
+  cursor: default; }
+  .custom_pagination a, .custom_pagination span {
+    padding: 0.2em 0.3em; }
+  .custom_pagination .disabled {
+    color: #aaaaaa; }
+  .custom_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background-color: #bebebe;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
+  .custom_pagination a {
+    text-decoration: none;
+    color: black; }
+    .custom_pagination a:hover, .custom_pagination a:focus {
+      text-decoration: underline; }
+
