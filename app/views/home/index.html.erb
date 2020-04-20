@@ -1,42 +1,59 @@
-<section class="jumbotron text-center">
-  <div class="container field form-group">
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Code challenge</a>
+</nav>
+
+<section class="jumbotron text-center mb-0 py-4">
+  <div id="page-content" class="container field form-group">
     <h1>Github search</h1>
-    <%= form_tag(home_path, method: :get) do  %>
-      <%= text_field_tag(:search, params[:search], placeholder: "Type something...", class: "form-control-sm") %>
-      <%= submit_tag "Search", name: nil, class: "actions", disabled: true, data: { disable_with: false }%>
-    <% end %>
-    <p>Search more than 28M public repositories</p>
+    <div class="form-group">
+      <%= form_tag(home_path, method: :get) do  %>
+        <%= text_field_tag(:search, params[:search], placeholder: "Type something...", class: "form-control-sm") %>
+        <%= submit_tag "Search", name: nil, class: "actions btn btn-primary mb-2", disabled: true, data: { disable_with: false }%>
+      <% end %>
+    </div>
+    <div>
+      <p class="lead">Search more than 28M public repositories</p>
+    </div>
   </div>
 </section>
-<div class="album py-5 bg-light">
-  <div class="container">
-    <div class="row">
-      <% if @result.success %>
-        <% if params[:search] && @result.items.empty? %>
-          <div><p>nothing was found =(</p></div>
-        <% else %>
-          <% @result.items.each do |repo| %>
+<div class="album pt-4 bg-light">
+  <% if @result.success %>
+    <div class="container">
+      <% if params[:search] && @result.items.empty? %>
+        <div class="text-center py-3">
+          <p>Nothing was found, my friend...  =/</p>
+        </div>
+      <% else %>
+        <div class="row">
+          <% for repo in @result.items %>
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
-                <div class="card-body">
-                  <p><%= repo.full_name %></p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <div><%= repo.language%></div>
-                      <div>Updated on <%= repo.pushed_at %></div>
-                    </div>
-                  </div>
+                <div class="card-body panel-footer">
+                  <p><%= link_to repo.full_name, repo.url, target: "_blank" %></p>
+                  <span class="d-inline pull-left"><small class="text-muted"><%= repo.language %></small></span>
+                  <span class="d-inline pull-right"><small>Updated on <%= repo.pushed_at %></small></span>
                 </div>
               </div>
             </div>
           <% end %>
-        <% end %>
-      <% else %>
-        <div class="container">
-          <h1>An error has ocurred, please try again later...</h1>
-          <p><%= @result.error_msg %></p>
         </div>
       <% end %>
     </div>
+    <% unless @result.items.blank? %>
+      <div class="custom_pagination">
+        <%= will_paginate @result.items, :container => false %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="text-center py-3">
+      <h1>An error has ocurred, please try again later...</h1>
+      <p><%= @result.error_msg %></p>
+    </div>
+  <% end %>
+</div>
+
+<div id="footer" class="py-4 bg-dark text-white">
+  <div class="container text-center">
+    <small>Copyright &copy; no one!</small>
   </div>
 </div>

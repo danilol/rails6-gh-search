@@ -2,7 +2,15 @@
 
 Very simple app to search public repositories from github using Rails 6.
 
-Authentication is not working properly, affecting searchs with big number of results, so it returns an error for reaching the request limits. 
+Authentication is not working properly, affecting searchs with big number of results, so it returns an error for reaching the request limits.
+
+Suggested search:
+ - usernames
+ - byebug
+ - bootsnap
+ - factory_bot_rails
+ - will_paginate
+ - paper-trail
 
 ## Setup
 `git clone `
