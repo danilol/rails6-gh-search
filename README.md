@@ -17,12 +17,12 @@ Some suggested search:
 
 `bundle`
 
-`rails s`
+`bundle exec rails s`
 
 ## Tests
 To run the controller tests:
 
-`rspec`
+`bundle exec rspec`
 
 ## TODO list:
 - [ ] Capybara tests
