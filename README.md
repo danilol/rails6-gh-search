@@ -17,6 +17,8 @@ Some suggested search:
 
 `bundle`
 
+`yarn install --check-files`
+
 `bundle exec rails s`
 
 ## Tests
